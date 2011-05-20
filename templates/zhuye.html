@@ -1,0 +1,50 @@
+
+
+{% if articles%}
+{% for articles in articleList.object_list %}
+
+  
+<div class="post">
+    
+			<h2 class="title">
+			    
+			    <a href="/action/?action={{articles.id}}">
+			    
+			        {{articles.title}}</a></h2>
+			<p class="meta"> {{articles.times|date:"Y年m月d日h:i a D"}}
+			<div class="info">
+                <span>关键字：{{articles.tags}}</span>
+                <span>文章类别：{{articles.cate__cateName}}</span>
+                <span>阅读次数：{{articles.hoter}}</span>
+              
+              </div>
+              </p>
+			<div class="entry">
+				<p>{{articles.content}}</p>
+		    </div>
+</div>
+
+{% endfor %}
+<center>
+ <div id="pages">
+		{% if articleList.has_previous %}
+		<!-- <a href="?page={{articleList.previous_page_number}}" title="下一页">上一页</a>&nbsp; -->
+		<a href="?page=1{{action}}" title="首 页">首 页</a>&nbsp;
+		{% endif %}
+		{% for p in page_range %}
+		{% ifequal p articleList.number %}
+		<span style="background:#FF9900;">{{p}}</span>
+		{% else %}
+		<a href="?page={{p}}{{action}}" title="第{{p}}页">{{p}}</a>
+		{% endifequal %}
+		{% endfor %}
+		&nbsp;
+		{% if articleList.has_next %}
+		<!-- <a href="?page={{articleList.next_page_number}}" title="下一页">下一页</a>&nbsp; -->
+		<a href="?page={{articleList.paginator.num_pages}}{{action}}" title="末 页">末 页</a>&nbsp;
+		{% endif %}
+ </div>
+</center>
+{% endif %}
+
+       

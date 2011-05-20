@@ -1,0 +1,26 @@
+<div id="sidebar">
+	<ul>
+		<li>
+			<h2>文章分类</h2>
+			<ul class='article'>
+			    {% for categories in categories %}
+            		{% ifequal category  categories.id %}
+            			<li><a href="/blog.html/?category={{categories.id}}" class="this">{{categories.cateName}}</a>({{categories.count}})</li>
+            		{% else %}
+            			<li><a href="/blog.html/?category={{categories.id}}" >{{categories.cateName}}</a>({{categories.count}})</li>
+            		{% endifequal %}
+            	{% endfor %}
+
+			</ul>
+		</li>
+		
+		<li>
+			<h2>最近写的文章</h2>
+			<ul class="article">
+    		{% for captions in captions %}
+              <li><a href="/action/?action={{captions.id}}">{{captions.title}}</a></li>
+    		{% endfor %}
+            </ul>
+		</li>
+	</ul>
+</div>

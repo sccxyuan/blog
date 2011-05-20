@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Street Clock  by Free CSS Templates</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body>
+    {% include 'header.html' %}
+    <div id="page">
+        <div class="article_article">
+          <center>
+          <h1>{{title_one}}</h1>
+          <div class="info">
+            <span>关键字：{{tag_one}}</span>
+            <span>文章类型：{{cate_one}}</span>
+            <span>阅读次数：{{hoter_one}}</span>
+            <span>时间：{{times|date:"Y.m.d.h:i a"}}</span>
+          </div>
+          </center>
+          <div class="zoom">
+       <p> {% autoescape off %}
+           {{content_one}}
+        {% endautoescape %}
+         </p> </div>
+          <ul class="nav_article">
+    	    <li>上一篇文章：
+        {% if previous %}
+        <a href="/action/?action={{previous_id}}">{{previous_caption}}</a>
+        {% else %}
+        没有了!
+        {% endif %}
+            </li>
+            <li>
+    	  下一篇文章：
+        {% if next %}
+        <a href="/action/?action={{next_id}}">{{next_caption}}</a>
+        {% else %}
+        没有了!
+        {% endif %}
+            </li>
+          </ul>
+        </div>
+
+          
+		<!-- end #sidebar -->
+		<div style="clear: both;">&nbsp;</div>
+	</div>
+	
+    
+	{% include 'footer.html' %}
+</body>
+</html>
